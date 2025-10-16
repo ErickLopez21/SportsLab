@@ -1,0 +1,24 @@
+/* stylelint-disable */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617;
+  color: #f1f5f9;
+}
+
+/* Robust min-height across mobile browsers and DevTools emulators */
+html, body, #root {
+  height: 100%;
+  min-height: 100%;
+}
+:root { --minvh: 100vh; }
+@supports (height: 100svh) { :root { --minvh: 100svh; } }
+@supports (height: 100dvh) { :root { --minvh: 100dvh; } }
+@supports (height: 100lvh) { :root { --minvh: 100lvh; } }
+.min-h-app { min-height: var(--minvh); }
