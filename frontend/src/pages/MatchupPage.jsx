@@ -581,11 +581,11 @@ export default function MatchupPage() {
             const noResultsRight = (typeof gamesR === 'number' && gamesR === 0);
             return (
               <div className="grid grid-cols-3 items-start mb-2 gap-x-1">
-                <div className="flex flex-col gap-2 w-full max-w-[280px] sm:max-w-[320px]">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex flex-col gap-2 w-full">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Jg.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Split'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -597,7 +597,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sd.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sede'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -608,10 +608,10 @@ export default function MatchupPage() {
                       </div>
                     </details>
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'C'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'Conf.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -623,7 +623,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'D.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'Div.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -652,11 +652,11 @@ export default function MatchupPage() {
                   })()}
                 </div>
                 <div />
-                <div className="flex flex-col gap-2 w-full min-w-0 max-w-[260px] sm:max-w-[320px] ml-auto justify-self-end">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex flex-col gap-2 w-full ml-auto justify-self-end">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'J'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'Split'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -668,7 +668,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sd'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sede'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -679,10 +679,10 @@ export default function MatchupPage() {
                       </div>
                     </details>
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'C'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'Conf.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -694,7 +694,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'D'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'Div.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -864,68 +864,68 @@ export default function MatchupPage() {
                 <div className="mt-1">
                   {/* Filtros (compactos) */}
                   <div className="grid grid-cols-3 items-start mb-2 gap-x-1">
-                    <div className="flex flex-col gap-2 w-full max-w-[280px] sm:max-w-[320px]">
-                      <div className="flex items-center gap-1.5 sm:gap-2">
-                        <details className="relative flex-1">
-                          <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Jg.'}</span>
-                            <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
-                          </summary>
-                          <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
-                          <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
-                            <button type="button" onClick={(e) => { setSpanL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='all'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todo</button>
-                            <button type="button" onClick={(e) => { setSpanL('last3'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='last3'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Últimos 3</button>
-                            <button type="button" onClick={(e) => { setSpanL('last5'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='last5'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Últimos 5</button>
-                          </div>
-                        </details>
-                        <details className="relative flex-1">
-                          <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sd.'}</span>
-                            <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
-                          </summary>
-                          <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
-                          <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
-                            <button type="button" onClick={(e) => { setVenueL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='all'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todas</button>
-                            <button type="button" onClick={(e) => { setVenueL('home'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='home'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Casa</button>
-                            <button type="button" onClick={(e) => { setVenueL('away'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='away'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Visita</button>
-                          </div>
-                        </details>
+                <div className="flex flex-col gap-2 w-full">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    <details className="relative flex-1">
+                      <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Split'}</span>
+                        <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
+                      </summary>
+                      <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
+                      <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
+                        <button type="button" onClick={(e) => { setSpanL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='all'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todo</button>
+                        <button type="button" onClick={(e) => { setSpanL('last3'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='last3'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Últimos 3</button>
+                        <button type="button" onClick={(e) => { setSpanL('last5'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${spanL==='last5'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Últimos 5</button>
                       </div>
-                      <div className="flex items-center gap-1.5 sm:gap-2">
-                        <details className="relative flex-1">
-                          <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'C.'}</span>
-                            <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
-                          </summary>
-                          <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
-                          <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
-                            <button type="button" onClick={(e) => { setOppConfL('all'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='all'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todas</button>
-                            <button type="button" onClick={(e) => { setOppConfL('AFC'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='AFC'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Americana</button>
-                            <button type="button" onClick={(e) => { setOppConfL('NFC'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='NFC'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Nacional</button>
-                          </div>
-                        </details>
-                        <details className="relative flex-1">
-                          <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'D.'}</span>
-                            <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
-                          </summary>
-                          <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
-                          <div className="absolute left-0 mt-1 w-48 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
-                            {[
-                              {val:'AFC East',label:'Americana Este'},
-                              {val:'AFC North',label:'Americana Norte'},
-                              {val:'AFC South',label:'Americana Sur'},
-                              {val:'AFC West',label:'Americana Oeste'},
-                              {val:'NFC East',label:'Nacional Este'},
-                              {val:'NFC North',label:'Nacional Norte'},
-                              {val:'NFC South',label:'Nacional Sur'},
-                              {val:'NFC West',label:'Nacional Oeste'}
-                            ].map((dv) => (
-                              <button key={dv.val} type="button" onClick={(e) => { setOppDivL(dv.val); setOppConfL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${oppDivL===dv.val?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>{dv.label}</button>
-                            ))}
-                          </div>
-                        </details>
+                    </details>
+                    <details className="relative flex-1">
+                      <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sede'}</span>
+                        <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
+                      </summary>
+                      <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
+                      <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
+                        <button type="button" onClick={(e) => { setVenueL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='all'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todas</button>
+                        <button type="button" onClick={(e) => { setVenueL('home'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='home'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Casa</button>
+                        <button type="button" onClick={(e) => { setVenueL('away'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${venueL==='away'?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Visita</button>
                       </div>
+                    </details>
+                  </div>
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    <details className="relative flex-1">
+                      <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'Conf.'}</span>
+                        <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
+                      </summary>
+                      <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
+                      <div className="absolute left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
+                        <button type="button" onClick={(e) => { setOppConfL('all'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='all'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Todas</button>
+                        <button type="button" onClick={(e) => { setOppConfL('AFC'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='AFC'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Americana</button>
+                        <button type="button" onClick={(e) => { setOppConfL('NFC'); setOppDivL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${(oppConfL==='NFC'&&oppDivL==='all')?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>Nacional</button>
+                      </div>
+                    </details>
+                    <details className="relative flex-1">
+                      <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'Div.'}</span>
+                        <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
+                      </summary>
+                      <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
+                      <div className="absolute left-0 mt-1 w-48 bg-white border border-zinc-200 rounded-xl shadow-md p-2 z-50">
+                        {[
+                          {val:'AFC East',label:'Americana Este'},
+                          {val:'AFC North',label:'Americana Norte'},
+                          {val:'AFC South',label:'Americana Sur'},
+                          {val:'AFC West',label:'Americana Oeste'},
+                          {val:'NFC East',label:'Nacional Este'},
+                          {val:'NFC North',label:'Nacional Norte'},
+                          {val:'NFC South',label:'Nacional Sur'},
+                          {val:'NFC West',label:'Nacional Oeste'}
+                        ].map((dv) => (
+                          <button key={dv.val} type="button" onClick={(e) => { setOppDivL(dv.val); setOppConfL('all'); const d=e.currentTarget.closest('details'); if (d) d.open=false; }} className={`block w-full text-left text-sm px-3 py-2 rounded-md ${oppDivL===dv.val?'bg-zinc-100 text-zinc-900 font-semibold':'text-zinc-900 hover:bg-zinc-50'}`}>{dv.label}</button>
+                        ))}
+                      </div>
+                    </details>
+                  </div>
                       {(() => {
                         const want = spanL === 'last3' ? 3 : (spanL === 'last5' ? 5 : null);
                         if (leftList.length === 0) return <div className="text-[10px] text-amber-600">Sin resultados con esta combinación de filtros</div>;
@@ -935,11 +935,11 @@ export default function MatchupPage() {
                       })()}
                     </div>
                     <div />
-                    <div className="flex flex-col gap-2 w-full min-w-0 max-w-[260px] sm:max-w-[320px] ml-auto justify-self-end">
-                      <div className="flex items-center gap-1.5 sm:gap-2">
+                    <div className="flex flex-col gap-2 w-full ml-auto justify-self-end">
+                      <div className="flex items-center gap-1 sm:gap-1.5">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'J'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'Split'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -951,7 +951,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sd'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sede'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -962,10 +962,10 @@ export default function MatchupPage() {
                           </div>
                         </details>
                       </div>
-                      <div className="flex items-center gap-1.5 sm:gap-2">
+                      <div className="flex items-center gap-1 sm:gap-1.5">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'C'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'Conf.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -977,7 +977,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'D'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'Div.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />

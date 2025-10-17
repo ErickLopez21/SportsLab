@@ -89,7 +89,7 @@ export default function LightHeader({ league = 'NFL', onLeagueChange, hideLeague
           <div className="fixed inset-0 h-screen w-screen bg-black/30" onClick={() => setMenuOpen(false)} />
           <aside className="fixed left-0 top-0 h-screen w-64 max-w-[80%] bg-white border-r border-zinc-200 shadow-xl p-3 flex flex-col overflow-y-auto overscroll-contain" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 8px)', paddingLeft: 'env(safe-area-inset-left)' }}>
             <div className="text-zinc-900 text-base font-extrabold mb-2 px-2">Menú</div>
-            <nav className="flex-1 flex flex-col gap-1">
+            <nav className="flex flex-col gap-1">
                   <Link to="/app" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-50 text-zinc-800 font-medium">
                     <img src="/icons/home bold.svg" alt="Inicio" className="w-5 h-5" />
                     Inicio
@@ -102,13 +102,13 @@ export default function LightHeader({ league = 'NFL', onLeagueChange, hideLeague
                     <img src="/icons/sword-spade bold.svg" alt="Versus" className="w-5 h-5" />
                     Versus
                   </Link>
+                  <div className="border-t border-zinc-200 my-2"></div>
+                  <a href="#profile" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-50 text-zinc-800 font-medium">
+                    <img src="/icons/user bold.svg" alt="Perfil" className="w-5 h-5" />
+                    Perfil
+                  </a>
             </nav>
-            <div className="border-t border-zinc-200 pt-2 mt-2 bg-white" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)' }}>
-              <a href="#profile" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-50 text-zinc-800 font-medium">
-                <img src="/icons/user bold.svg" alt="Perfil" className="w-5 h-5" />
-                Perfil
-              </a>
-            </div>
+            <div className="bg-white" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)' }}></div>
           </aside>
         </div>
       )}
