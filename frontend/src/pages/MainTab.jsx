@@ -17,7 +17,7 @@ function NavCard() {
   const linkBase = 'text-zinc-700 hover:text-black px-3 py-2 rounded-lg hover:bg-zinc-100';
   const activeCls = 'bg-zinc-100 text-black';
   const isHome = location.pathname === '/app' && !location.hash;
-  const isPlayers = location.hash === '#players';
+  const isPlayers = location.pathname === '/players';
   const isTeams = location.pathname.startsWith('/versus');
   const isProfile = location.hash === '#profile';
   const icon = (base, active = false) => `/icons/${base}${active ? ' bold' : ''}.svg`;
@@ -28,18 +28,18 @@ function NavCard() {
           <img src={icon('home', isHome)} alt="Inicio" className="w-4 h-4" />
           Inicio
         </Link>
-        <a className={`${linkBase} ${isProfile ? activeCls : ''} flex items-center gap-2`} href="#profile">
-          <img src={icon('user', isProfile)} alt="Perfil" className="w-4 h-4" />
-          Perfil
-        </a>
-        <a className={`${linkBase} ${isPlayers ? activeCls : ''} flex items-center gap-2`} href="#players">
-          <img src={icon('user', false)} alt="Jugadores" className="w-4 h-4" />
+        <Link className={`${linkBase} ${isPlayers ? activeCls : ''} flex items-center gap-2`} to="/players">
+          <img src={icon('user', isPlayers)} alt="Jugadores" className="w-4 h-4" />
           Jugadores
-        </a>
+        </Link>
         <Link className={`${linkBase} ${isTeams ? activeCls : ''} flex items-center gap-2`} to="/versus">
           <img src={icon('sword-spade', isTeams)} alt="Versus" className="w-4 h-4" />
           Versus
         </Link>
+        <a className={`${linkBase} ${isProfile ? activeCls : ''} flex items-center gap-2`} href="#profile">
+          <img src={icon('user', isProfile)} alt="Perfil" className="w-4 h-4" />
+          Perfil
+        </a>
       </div>
     </Card>
   );

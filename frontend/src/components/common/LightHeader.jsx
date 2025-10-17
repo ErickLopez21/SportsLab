@@ -1,8 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function LightHeader({ league = 'NFL', onLeagueChange, hideLeagueSelector = false, leftLogoSrc, hideMenuButton = false, leftLogoClassName, showAuthButtons = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [menuOpen]);
   
   return (
     <>
@@ -67,9 +85,9 @@ export default function LightHeader({ league = 'NFL', onLeagueChange, hideLeague
 
       {/* Side menu sheet - Portal outside header */}
       {!hideMenuButton && menuOpen && (
-        <div className="fixed inset-0" style={{ zIndex: 9999 }}>
-          <div className="absolute inset-0 bg-black/30" onClick={() => setMenuOpen(false)} />
-          <aside className="absolute left-0 top-0 bottom-0 w-64 max-w-[80%] bg-white border-r border-zinc-200 shadow-xl p-3 flex flex-col h-full overflow-y-auto overscroll-contain" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 8px)', paddingLeft: 'env(safe-area-inset-left)' }}>
+        <div className="fixed inset-0 h-screen w-screen" style={{ zIndex: 9999 }}>
+          <div className="fixed inset-0 h-screen w-screen bg-black/30" onClick={() => setMenuOpen(false)} />
+          <aside className="fixed left-0 top-0 h-screen w-64 max-w-[80%] bg-white border-r border-zinc-200 shadow-xl p-3 flex flex-col overflow-y-auto overscroll-contain" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 8px)', paddingLeft: 'env(safe-area-inset-left)' }}>
             <div className="text-zinc-900 text-base font-extrabold mb-2 px-2">Menú</div>
             <nav className="flex-1 flex flex-col gap-1">
                   <Link to="/app" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-50 text-zinc-800 font-medium">
@@ -85,7 +103,7 @@ export default function LightHeader({ league = 'NFL', onLeagueChange, hideLeague
                     Versus
                   </Link>
             </nav>
-            <div className="sticky bottom-0 border-t border-zinc-200 pt-2 mt-2 bg-white" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)' }}>
+            <div className="border-t border-zinc-200 pt-2 mt-2 bg-white" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 8px)' }}>
               <a href="#profile" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-50 text-zinc-800 font-medium">
                 <img src="/icons/user bold.svg" alt="Perfil" className="w-5 h-5" />
                 Perfil

@@ -11,6 +11,12 @@ export default function TeamPage() {
   const [league] = useState('nfl');
   const color = useMemo(() => getTeamPrimaryColor(team), [team]);
   // const fullName = useMemo(() => getTeamFullName(team), [team]);
+  
+  // Normalize team code for API calls (LAR -> LA for backend compatibility)
+  const normalizedTeam = useMemo(() => {
+    const t = String(team || '').toUpperCase();
+    return t === 'LAR' ? 'LA' : t;
+  }, [team]);
 
   const teamsList = [
     'ARI','ATL','BAL','BUF','CAR','CHI','CIN','CLE','DAL','DEN','DET','GB','HOU','IND','JAX','KC','LAC','LAR','LV','MIA','MIN','NE','NO','NYG','NYJ','PHI','PIT','SEA','SF','TB','TEN','WAS'
@@ -63,9 +69,8 @@ export default function TeamPage() {
       try {
         const d = await getStandings(new Date().getFullYear());
         if (!alive || !d || !d.conferences) return;
-        const t = String(team || '').toUpperCase();
         const all = [...(d.conferences.AFC || []), ...(d.conferences.NFC || [])];
-        const row = all.find((r) => r.team === t);
+        const row = all.find((r) => r.team === normalizedTeam);
         if (!row) return;
         const wl = `${row.w}-${row.l}${row.t ? `-${row.t}` : ''}`;
         const div = row.division || '';
@@ -74,7 +79,7 @@ export default function TeamPage() {
         const confRows = conferences[confKey] || [];
         // Rank helpers: 1-based; if not found, default 1 (handles ties edge-cases from merges)
         const rankOf = (rowsArr) => {
-          const idx = (rowsArr || []).findIndex((r) => r.team === t);
+          const idx = (rowsArr || []).findIndex((r) => r.team === normalizedTeam);
           return idx >= 0 ? (idx + 1) : 1;
         };
         const divRows = (confRows || []).filter((r) => r.division === div);
@@ -96,7 +101,7 @@ export default function TeamPage() {
     };
     load();
     return () => { alive = false; };
-  }, [team]);
+  }, [normalizedTeam]);
 
   // Load team schedule for current month (monthly calendar)
   useEffect(() => {
@@ -110,9 +115,8 @@ export default function TeamPage() {
       .then((d) => {
         if (!alive) return;
         const list = Array.isArray(d?.games) ? d.games : [];
-        const t = String(team || '').toUpperCase();
         const filtered = list
-          .filter((g) => g.home_team === t || g.away_team === t)
+          .filter((g) => g.home_team === normalizedTeam || g.away_team === normalizedTeam)
           .map((g) => {
             const localKick = parseEtToLocalDate(g.kickoff || g.game_date);
             return { ...g, _localKick: localKick };
@@ -122,43 +126,43 @@ export default function TeamPage() {
       })
       .catch(() => alive && setMonthStatus('error'));
     return () => { alive = false; };
-  }, [team, monthDate]);
+  }, [normalizedTeam, monthDate]);
 
   // Load offensive metrics (REG season 2025)
   useEffect(() => {
     let alive = true;
-    getTeamOffense(String(team || '').toUpperCase(), 2025, 'REG')
+    getTeamOffense(normalizedTeam, 2025, 'REG')
       .then((d) => { if (!alive) return; setOffMetrics(d && d.metrics ? d.metrics : null); })
       .catch(() => {});
     getLeagueOffenseRanks(2025, 'REG')
       .then((d) => { if (!alive) return; setOffRanks(d && Array.isArray(d.teams) ? d.teams : null); })
       .catch(() => {});
     return () => { alive = false; };
-  }, [team]);
+  }, [normalizedTeam]);
 
   // Load defensive metrics (REG season 2025)
   useEffect(() => {
     let alive = true;
-    getTeamDefense(String(team || '').toUpperCase(), 2025, 'REG')
+    getTeamDefense(normalizedTeam, 2025, 'REG')
       .then((d) => { if (!alive) return; setDefMetrics(d && d.metrics ? d.metrics : null); })
       .catch(() => {});
     getLeagueDefenseRanks(2025, 'REG')
       .then((d) => { if (!alive) return; setDefRanks(d && Array.isArray(d.teams) ? d.teams : null); })
       .catch(() => {});
     return () => { alive = false; };
-  }, [team]);
+  }, [normalizedTeam]);
 
   // Load special teams metrics (REG season 2025)
   useEffect(() => {
     let alive = true;
-    getTeamSpecialTeams(String(team || '').toUpperCase(), 2025, 'REG')
+    getTeamSpecialTeams(normalizedTeam, 2025, 'REG')
       .then((d) => { if (!alive) return; setStMetrics(d && d.metrics ? d.metrics : null); })
       .catch(() => {});
     getLeagueSpecialTeamsRanks(2025, 'REG')
       .then((d) => { if (!alive) return; setStRanks(d && Array.isArray(d.teams) ? d.teams : null); })
       .catch(() => {});
     return () => { alive = false; };
-  }, [team]);
+  }, [normalizedTeam]);
 
   return (
     <div className="" style={{ backgroundColor: '#FAFAFA', minHeight: 'var(--minvh)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
@@ -208,7 +212,7 @@ export default function TeamPage() {
             let ppgRank = null;
             if (leagueRows && leagueRows.length) {
               const sorted = [...leagueRows].sort((a, b) => ((b.pf_pg ?? 0) - (a.pf_pg ?? 0)));
-              const idx = sorted.findIndex((r) => r.team === String(team || '').toUpperCase());
+              const idx = sorted.findIndex((r) => r.team === normalizedTeam);
               ppgRank = idx >= 0 ? ord(idx + 1) : null;
             }
             const rankOf = (key) => {
@@ -222,7 +226,7 @@ export default function TeamPage() {
                 }
                 return String(a.team).localeCompare(String(b.team)); // desempate estable
               });
-              const idx = sorted.findIndex((r) => r.team === String(team || '').toUpperCase());
+              const idx = sorted.findIndex((r) => r.team === normalizedTeam);
               return idx >= 0 ? `${idx + 1}.º` : '—';
             };
             const fmt1 = (x) => (x == null ? '—' : Number(x).toFixed(1));
@@ -245,7 +249,7 @@ export default function TeamPage() {
                 }
                 return String(a.team).localeCompare(String(b.team));
               });
-              const idx = sorted.findIndex((r) => r.team === String(team || '').toUpperCase());
+              const idx = sorted.findIndex((r) => r.team === normalizedTeam);
               return idx >= 0 ? `${idx + 1}.º` : '—';
             };
             const itemsBottom = [
@@ -292,7 +296,7 @@ export default function TeamPage() {
                 if (va !== vb) return smallerIsBetter ? va - vb : vb - va;
                 return String(a.team).localeCompare(String(b.team));
               });
-              const idx = sorted.findIndex((r) => r.team === String(team || '').toUpperCase());
+              const idx = sorted.findIndex((r) => r.team === normalizedTeam);
               return idx >= 0 ? `${idx + 1}.º` : '—';
             };
             const fmt1 = (x) => (x == null ? '—' : Number(x).toFixed(1));
@@ -350,7 +354,7 @@ export default function TeamPage() {
                 if (va !== vb) return smallerIsBetter ? va - vb : vb - va;
                 return String(a.team).localeCompare(String(b.team));
               });
-              const idx = sorted.findIndex((r) => r.team === String(team || '').toUpperCase());
+              const idx = sorted.findIndex((r) => r.team === normalizedTeam);
               return idx >= 0 ? `${idx + 1}.º` : '—';
             };
             const fmt1 = (x) => (x == null ? '—' : Number(x).toFixed(1));

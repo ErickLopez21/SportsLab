@@ -29,14 +29,14 @@ const TEAM_TO_DIV = {
 };
 const TEAM_TO_CONF = Object.fromEntries(Object.entries(TEAM_TO_DIV).map(([t, dv]) => [t, (dv || '').split(' ')[0]]));
 const DIV_TO_ES = {
-  'AFC East': 'AFC Este',
-  'AFC North': 'AFC Norte',
-  'AFC South': 'AFC Sur',
-  'AFC West': 'AFC Oeste',
-  'NFC East': 'NFC Este',
-  'NFC North': 'NFC Norte',
-  'NFC South': 'NFC Sur',
-  'NFC West': 'NFC Oeste',
+  'AFC East': 'AFC E',
+  'AFC North': 'AFC N',
+  'AFC South': 'AFC S',
+  'AFC West': 'AFC O',
+  'NFC East': 'NFC E',
+  'NFC North': 'NFC N',
+  'NFC South': 'NFC S',
+  'NFC West': 'NFC O',
 };
 const divToEs = (v) => DIV_TO_ES[v] || v;
 
@@ -575,7 +575,7 @@ export default function MatchupPage() {
             </div>
           </div>
           {tab === 'stats' ? (() => {
-            const spanText = (v) => (v === 'last3' ? 'Últimos 3' : (v === 'last5' ? 'Últimos 5' : 'Todo'));
+            const spanText = (v) => (v === 'last3' ? 'Últ. 3' : (v === 'last5' ? 'Últ. 5' : 'Todos'));
             const venueText = (v) => (v === 'home' ? 'Casa' : (v === 'away' ? 'Visita' : 'Todas'));
             const noResultsLeft = (typeof gamesL === 'number' && gamesL === 0);
             const noResultsRight = (typeof gamesR === 'number' && gamesR === 0);
@@ -585,7 +585,7 @@ export default function MatchupPage() {
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Splits'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Jg.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -597,7 +597,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sede'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sd.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -611,7 +611,7 @@ export default function MatchupPage() {
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'Conf.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'C'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -623,7 +623,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'Div.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'D.'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -656,7 +656,7 @@ export default function MatchupPage() {
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'Splits'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'J'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -668,7 +668,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sede'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sd'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -682,7 +682,7 @@ export default function MatchupPage() {
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'Conf.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'C'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -694,7 +694,7 @@ export default function MatchupPage() {
                     </details>
                     <details className="relative flex-1">
                       <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'Div.'}</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'D'}</span>
                         <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                       </summary>
                       <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -761,7 +761,7 @@ export default function MatchupPage() {
                 return <div className="py-2 text-center text-[12px] md:text-sm text-zinc-600">Selecciona dos equipos para ver tendencias</div>;
               }
               // Reusar filtros (lado izquierdo aplica a away, lado derecho a home) también en Tendencias
-              const spanText = (v) => (v === 'last3' ? 'Últimos 3' : (v === 'last5' ? 'Últimos 5' : 'Todo'));
+              const spanText = (v) => (v === 'last3' ? 'Últ. 3' : (v === 'last5' ? 'Últ. 5' : 'Todos'));
               const venueText = (v) => (v === 'home' ? 'Casa' : (v === 'away' ? 'Visita' : 'Todas'));
               const T1 = String(home || '').toUpperCase();
               const T2 = String(away || '').toUpperCase();
@@ -868,7 +868,7 @@ export default function MatchupPage() {
                       <div className="flex items-center gap-1.5 sm:gap-2">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Splits'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanL !== 'all' ? spanText(spanL) : 'Jg.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -880,7 +880,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sede'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueL !== 'all' ? venueText(venueL) : 'Sd.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -894,7 +894,7 @@ export default function MatchupPage() {
                       <div className="flex items-center gap-1.5 sm:gap-2">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'Conf.'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfL !== 'all' ? oppConfL : 'C.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -906,7 +906,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'Div.'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivL !== 'all' ? divToEs(oppDivL) : 'D.'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -939,7 +939,7 @@ export default function MatchupPage() {
                       <div className="flex items-center gap-1.5 sm:gap-2">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'Splits'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{spanR !== 'all' ? spanText(spanR) : 'J'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -951,7 +951,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sede'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{venueR !== 'all' ? venueText(venueR) : 'Sd'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -965,7 +965,7 @@ export default function MatchupPage() {
                       <div className="flex items-center gap-1.5 sm:gap-2">
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'Conf.'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppConfR !== 'all' ? oppConfR : 'C'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
@@ -977,7 +977,7 @@ export default function MatchupPage() {
                         </details>
                         <details className="relative flex-1">
                           <summary className="list-none inline-flex w-full items-center justify-between gap-1 h-8 px-2 sm:px-2.5 rounded-full border bg-white text-zinc-800 border-zinc-200 text-[11px] sm:text-xs font-semibold cursor-pointer">
-                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'Div.'}</span>
+                            <span className="whitespace-nowrap overflow-hidden text-ellipsis">{oppDivR !== 'all' ? divToEs(oppDivR) : 'D'}</span>
                             <img src="/icons/angle-down.svg" alt="abrir" className="w-2.5 h-2.5 flex-shrink-0" />
                           </summary>
                           <div className="fixed inset-0 z-40" onClick={(e) => { const d = e.currentTarget.closest('details'); if (d) d.open = false; }} />
